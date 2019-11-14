@@ -3,18 +3,18 @@ const Schema = mongoose.Schema
 const ObjectId = Schema.ObjectId
  
 
-const IncountSchema = new Schema({
+const IncCountSchema = new Schema({
   field: {type: String, index: {unique: true}},
   value: {type: Number, default: 1}
 })
 
-IncountSchema.statics = {
+IncCountSchema.statics = {
   incNumber: function(field){
     return this.findOneAndUpdate({field}, {$inc: {value: 1}}, {upsert: true, new: true})
     .then(result => result.value)
   }
 }
 
-let Incount = mongoose.model('Incount', IncountSchema)
+let IncCount = mongoose.model('IncCount', IncCountSchema)
 
-module.exports = Incount
+module.exports = IncCount

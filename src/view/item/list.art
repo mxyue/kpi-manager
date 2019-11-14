@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"	/>
+	<meta name="referrer" content="no-referrer" />
+	<link rel="stylesheet" href="/css/flexboxgrid.min.css" type="text/css">
+
+	<title>{{title}}</title>
+
+	<style type="text/css">
+	</style>
+</head>
+
+<body>
+	<div class='container'>
+		<div class="header">
+			<input type="text" placeholder='filter'>
+			<button type="submit" onclick="location='/items/new'">新建</button>
+		</div>
+
+		<div class="item-holder">
+			<ul class="content-list">
+				{{each items item}}
+				<li>
+					<div class="issue-box">
+						<text>[{{item.score}}] {{item.title}}</text>
+						<div>
+							<span>执行人: </span> 
+							{{if item.assignee}}
+								<span>{{item.assignee.name}}({{item.assignee.username}})</span>
+							{{/if}}
+						</div>
+						<text>{{item.labels}}</text>
+						<button type="submit" class="btn-submit" onclick="location=`/items/{{item.id}}/edit`">查看</button>
+						<a href="/items/{{item.id}}/delete" onclick="return confirm('确定删除?');">删除</a>
+					</div>
+					<div class="grade-box">
+						<div class="row">
+							<div class="col-xs-6 col-md-4">
+						 		正分: <text>{{item.incScore}}</text>
+						 	</div>
+							<div class="col-xs-4 col-md-3">
+						 		工期: <text>{{item.due}}</text>
+						 	</div>
+							<div class="col-xs-4 col-md-3">
+						 		难度: <text>{{item.complex}}</text>
+						 	</div>
+						</div>
+
+					 	<div class="row">
+						 	<div class="col-xs-6 col-md-4">
+						 		负分: <text>{{item.decScore}}</text>
+						 	</div>
+						 	<div class="col-xs-4 col-md-3">
+						 		bug: <text>{{item.bug}}</text> 
+						 	</div>   
+						 	<div class="col-xs-4 col-md-3">
+						 		test: <text>{{item.test}}</text> 
+						 	</div>   
+				 
+						</div>
+
+						<div class="row">
+							<div class="col-xs-6 col-md-4">
+						 		偏分: <text>{{item.offsetScore}}</text>
+						 	</div>
+							<div class="col-xs-4 col-md-3">
+						 		代码质量: <text>{{item.codeReview}}</text> 
+						 	</div>   
+						</div>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+  />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="stylesheet" href="/css/flexboxgrid.min.css" type="text/css">
+
+  <title>{{title}}</title>
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+  <div class='container'>
+
+    <div class="item-holder">
+
+
+      <form action="/items" method="post">
+        <div class="grade-box">
+          <div class="row">
+            <div class="col-xs-8">
+              <span class="label">标题:</span>
+              <input class="col-xs-6" type="text" name="title" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <span class="label">正分:</span>
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">工期:</span>
+              <input type="text" name="due" />
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">难度:</span>
+              <input type="text" name="complex" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4 col-md-3">
+              <span class="label">执行人:</span>
+              <select name="assigneeId">
+                <option value="">--</option>
+                {{each users user}}
+                <option value="{{user.nid}}">{{user.name}}-{{user.username}}</option>
+                {{/each}}
+              </select>
+            </div>
+
+            <div class="col-xs-4 col-md-3">
+              <span class="label">标签:</span>
+              <input type="text" name="labels" />
+            </div>
+
+            <div class="col-xs-4 col-md-3">
+              <span class="label">项目:</span>
+              <select name="projectId">
+                <option value="">--</option>
+                {{each projects project}}
+                <option value="{{project.nid}}">{{project.name}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="submit">确定</button>
+
+      </form>
+
+    </div>
+
+    <div>
+      <button onclick="location='/'">返回列表</button>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

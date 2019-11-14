@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+  />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="stylesheet" href="/css/flexboxgrid.min.css" type="text/css">
+
+  <title>{{title}}</title>
+  <style type="text/css">
+  </style>
+
+</head>
+
+<body>
+  <div class='container'>
+
+    <div class="item-holder">
+
+
+      <form action="/items/{{item.id}}/edit" method="post">
+        <div class="grade-box">
+          <div class="row">
+            <div class="col-xs-8">
+              <span class="label">标题:</span>
+              <input class="col-xs-6" type="text" name="title" value={{item.title}}>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <span class="label">正分:</span>
+              <text>{{item.incScore}}</text>
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">工期:</span>
+              <input type="text" name="due" value={{item.due}}>
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">难度:</span>
+              <input type="text" name="complex" value={{item.complex}}>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <span class="label">负分:</span>
+              <span>{{item.decScore}}</span>
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">bug:</span>
+              <input type="text" name="bug" value={{item.bug}}>
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">test:</span>
+              <input type="text" name="test" value={{item.test}}>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <span class="label">偏分:</span>
+              <span class="col-xs-2">{{item.offsetScore}}</span>
+            </div>
+            <div class="col-xs-4 col-md-3">
+              <span class="label">代码质量:</span>
+              <input type="text" name="codeReview" value={{item.codeReview}}>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4 col-md-3">
+              <span class="label">执行人:</span>
+              <select name="assigneeId">
+                <option value="">--</option>
+                {{each users user}}
+                <option {{if user.nid==item.assigneeId}} selected="selected" {{/if}} value="{{user.nid}}">{{user.name}}</option>
+                {{/each}}
+              </select>
+            </div>
+
+            <div class="col-xs-4 col-md-3">
+              <span class="label">标签:</span>
+              <input type="text" name='labels' value={{item.labels}}>
+            </div>
+
+            <div class="col-xs-4 col-md-3">
+              <span class="label">项目:</span>
+              <span>{{item.project && item.project.name}}</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit">确定</button>
+
+      </form>
+
+    </div>
+
+    <div>
+      <button onclick="location='/'">返回列表</button>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "nodemon main.js --ignore test/ --ignore public/ --ignore temp/"
+    "dev": "NODE_ENV=dev nodemon main.js --ignore test/ --ignore public/ --ignore temp/"
   },
   "author": "mxyue",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "mongoose": "^5.7.9",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "request-promise": "^4.2.5"
   }
 }

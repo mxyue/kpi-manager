@@ -26,8 +26,8 @@ render(app, {
   debug: process.env.NODE_ENV !== 'production'
 })
 
-let publickPath = path.join(__dirname, '../public')
-app.use(koaStatic(publickPath))
+let publicPath = path.join(__dirname, '../public')
+app.use(koaStatic(publicPath))
 
 app.use(controller.routes())
 app.use(api.routes())
